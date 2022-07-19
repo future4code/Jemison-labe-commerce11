@@ -1,6 +1,8 @@
 import React from "react";
 import Cart from "./components/Cart/Cart";
 import styled from "styled-components";
+import Home from './Home/home';
+import { produtos } from './mockpDados';
 
 
 const MainContainer = styled.div`
@@ -40,7 +42,7 @@ function App() {
         Sou Filtro
       </ContainerFilter>
       <ContainerHome>
-        Sou Home
+        <Home produtos={produtos} />
       </ContainerHome>
       <ContainerCart>
         <Cart />
