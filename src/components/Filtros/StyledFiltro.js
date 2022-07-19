@@ -6,7 +6,6 @@ export const Sessao= styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border: 2px solid black;
     margin: 10px 0 0 10px;
     width: 25vw;
     
