@@ -1,4 +1,4 @@
-export const produtos = [
+export const mockProdutos = [
     {
         id: 1,
         name: 'Camiseta Unissex Astronaut Swing Moon Space Nasa',

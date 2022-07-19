@@ -4,7 +4,7 @@ import { Main, Filtros, Cards, Prod } from "./styled";
 function Home(props) {
 
     const listaProdutos = props.produtos.map((item, index) => {
-        return <Prod key={index}> <img src={item.photo} /> <div>{item.name}</div> <div>R$ {item.price.toFixed(2)}</div> <button> Adicionar ao carrinho </button></Prod>
+        return <Prod key={index}> <img src={item.photo} /> <div>{item.name}</div> <div>R$ {item.price.toFixed(2)}</div> <button onClick={()=> props.addCarrinho(item)}> Adicionar ao carrinho </button></Prod>
     })
 
     return (

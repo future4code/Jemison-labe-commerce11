@@ -43,6 +43,5 @@ export const Prod = styled.div`
         font-size: 15px;
         border-radius: 5px;
         height: 5%;
-        width: 50%;
     }
 `
