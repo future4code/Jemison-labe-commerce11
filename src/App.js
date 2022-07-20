@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Cart from "./components/Cart/Cart";
 import styled from "styled-components";
-import Home from './Home/home';
+import Home from './components/Home/home';
 import { mockProdutos } from './mockpDados';
 import Filtros from "./components/Filtros/Filtros";
 import Home from './components/Home/home';
@@ -38,6 +38,7 @@ const ContainerCart = styled.div`
 function App() {
 
   const [produtos, setProdutos] = useState(mockProdutos)
+  const [order, setOrder] = useState("")
   
   const adicionaCarrinho = (produto) => {}
 
@@ -47,7 +48,9 @@ function App() {
         <Filtros/>
       </ContainerFilter>
       <ContainerHome>
-        <Home produtos={produtos} addCarrinho={adicionaCarrinho}/>
+        <Home produtos={produtos} addCarrinho={adicionaCarrinho}
+       
+        />
       </ContainerHome>
       <ContainerCart>
         <Cart />

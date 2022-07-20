@@ -15,9 +15,13 @@ function Home(props) {
                 </div>
                 <div>
                     <p>Ordenação:
-                        <select>
-                            <option>Crescente</option>
-                            <option>Decrescente</option>
+                        <select
+                            name="order"
+                            value={props.order}
+                            onChange={props.updateOrder}
+                        >
+                            <option value={1}>Crescente</option>
+                            <option value={-1}>Decrescente</option>
                         </select>
                     </p>
                 </div>
