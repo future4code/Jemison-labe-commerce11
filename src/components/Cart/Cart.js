@@ -28,7 +28,7 @@ const Cart = (props) => {
             <h2>Carrinho:</h2>
             <Produto>
                 <p>2X</p>  {/* TODO: Modificar valor de id por valor de quantidade */}
-                <p>Produto {01}</p>
+                <p>Produto 01</p>
                 <BotaoRemover>Remover</BotaoRemover>
             </Produto>
             <ValorTotal>Valor Total: R$ 2.300,00</ValorTotal>

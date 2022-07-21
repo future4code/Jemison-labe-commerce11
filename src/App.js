@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Cart from "./components/Cart/Cart";
 import styled from "styled-components";
 import Home from './components/Home/home';
@@ -38,18 +38,77 @@ const ContainerCart = styled.div`
 function App() {
 
   const [produtos, setProdutos] = useState(mockProdutos)
+  const [query, setQuery] = useState("")
+  const [minPrice, setMinPrice] = useState("")
+  const [maxPrice, setMaxPrice] = useState("")
   const [order, setOrder] = useState("")
-  
-  const adicionaCarrinho = (produto) => {}
+
+  const updateQuery = (e) => {
+    setQuery(e.target.value)
+  }
+
+  const updateMinPrice = (e) => {
+    setMinPrice(e.target.value)
+  }
+
+  const updateMaxPrice = (e) => {
+    setMaxPrice(e.target.value)
+  }
+
+  const updateOrder = (e) => {
+    setOrder(e.target.value)
+  }
+
+  const adicionaCarrinho = (produto) => { }
+
+  const produtosFiltrados = produtos
+    .filter((item) => {
+      return item.name.toLowerCase().includes(query.toLowerCase()) || query === ""
+    })
+    .filter((item) => {
+      return item.price >= minPrice || minPrice === ""
+    })
+    .filter((item) => {
+      return item.price <= maxPrice || maxPrice === ""
+    })
+    .sort((currentValue, nextValue) => {
+      if (order === "asc") {
+        if (currentValue.name > nextValue.name) {
+          return 1
+        }
+        if (currentValue.name < nextValue.name) {
+          return -1
+        }
+        return 0
+      }
+      if (order === "desc") {
+        if (currentValue.name > nextValue.name) {
+          return -1
+        }
+        if (currentValue.name < nextValue.name) {
+          return 1
+        }
+        return 0
+      }
+    })
+
 
   return (
     <MainContainer>
       <ContainerFilter>
-        <Filtros/>
+        <Filtros
+          query={query}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          updateQuery={updateQuery}
+          updateMinPrice={updateMinPrice}
+          updateMaxPrice={updateMaxPrice}
+        />
       </ContainerFilter>
       <ContainerHome>
-        <Home produtos={produtos} addCarrinho={adicionaCarrinho}
-       
+        <Home produtos={produtosFiltrados} addCarrinho={adicionaCarrinho}
+          order={order}
+          updateOrder={updateOrder}
         />
       </ContainerHome>
       <ContainerCart>

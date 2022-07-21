@@ -7,11 +7,13 @@ function Home(props) {
         return <Prod key={index}> <img src={item.photo} /> <div>{item.name}</div> <div>R$ {item.price.toFixed(2)}</div> <button onClick={()=> props.addCarrinho(item)}> Adicionar ao carrinho </button></Prod>
     })
 
+
+
     return (
         <Main>
             <Filtros>
                 <div>
-                    <p>Quantidade de produtos: </p>
+                    <p>Quantidade de produtos: {listaProdutos.length}</p>
                 </div>
                 <div>
                     <p>Ordenação:
@@ -20,8 +22,8 @@ function Home(props) {
                             value={props.order}
                             onChange={props.updateOrder}
                         >
-                            <option value={1}>Crescente</option>
-                            <option value={-1}>Decrescente</option>
+                            <option value={"asc"}>Crescente</option>
+                            <option value={"desc"}>Decrescente</option>
                         </select>
                     </p>
                 </div>
