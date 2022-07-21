@@ -1,7 +1,7 @@
 import React from "react";
 import {Sessao} from './StyledFiltro.js';
 
-function Filtros(){
+function Filtros(props){
 
     return(
         <Sessao>
