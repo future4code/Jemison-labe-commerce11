@@ -22,15 +22,25 @@ const ValorTotal = styled.p`
 `
 
 const Cart = (props) => {
+
+    const produtos = props.listaCarrinho.map((item, index) => {
+        return (
+            <Produto key={index}>
+                <p>{item.quantidade}X</p>
+                <p>{item.name}</p>
+                <BotaoRemover>Remover</BotaoRemover>
+            </Produto>
+        )
+    })
+    console.log(props.listaCarrinho);
+
+    const total = props.listaCarrinho.map((item, index) =>)
+
     
     return(
         <Container>            
             <h2>Carrinho:</h2>
-            <Produto>
-                <p>2X</p>  {/* TODO: Modificar valor de id por valor de quantidade */}
-                <p>Produto 01}</p>
-                <BotaoRemover>Remover</BotaoRemover>
-            </Produto>
+            {produtos}
             <ValorTotal>Valor Total: R$ 2.300,00</ValorTotal>
         </Container>
     )
