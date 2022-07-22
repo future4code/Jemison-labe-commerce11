@@ -5,7 +5,7 @@ function Filtros(props){
 
     return(
         <Sessao>
-            <h1>Busca Avançada</h1>
+            <h1>Filtros</h1>
             <form action="">
                 <div>
                     <label>

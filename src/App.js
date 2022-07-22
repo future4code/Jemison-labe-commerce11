@@ -5,6 +5,8 @@ import Home from './components/Home/home';
 import { mockProdutos } from './mockpDados';
 import Filtros from "./components/Filtros/Filtros";
 
+
+
 const MainContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -111,6 +113,7 @@ function App() {
 
 
   return (
+    
     <MainContainer>
       <ContainerFilter>
         <Filtros

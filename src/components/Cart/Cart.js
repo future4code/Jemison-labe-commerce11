@@ -6,18 +6,31 @@ const Container = styled.div`
   flex-direction: column;
   height: 100%;
   padding: 1rem;
+  color: #4682B4;
 `
 
 const Produto = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+color: black;
 `
 const BotaoRemover = styled.button`
-
+font-size: 15px;
+       
+       height: 30px;
+      
+       background: #016ABC;
+       color: #fff;
+       
+       border: 1px solid #eee;
+       border-radius: 5px;
+       box-shadow: 5px 5px 5px #eee;
+       text-shadow:none;
 `
 
 const ValorTotal = styled.p`
+color: black;
 
 `
 
