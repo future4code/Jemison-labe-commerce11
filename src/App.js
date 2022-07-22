@@ -42,6 +42,7 @@ function App() {
   const [minPrice, setMinPrice] = useState("")
   const [maxPrice, setMaxPrice] = useState("")
   const [order, setOrder] = useState("")
+  const [carrinho, setCarrinho] = useState([])
 
   const updateQuery = (e) => {
     setQuery(e.target.value)
@@ -59,7 +60,24 @@ function App() {
     setOrder(e.target.value)
   }
 
-  const adicionaCarrinho = (produto) => { }
+  const adicionaCarrinho = (produtoNovo) => {
+    const existeNoCarrinho = carrinho.find(produto => produto.id === produtoNovo.id)
+
+    if(existeNoCarrinho) {
+      const novoCarrinho = carrinho.map(produto => {
+        if(produto.id === produtoNovo.id) {
+          return {...produto, quantity: produto.quantity + 1}
+        }
+        return produto
+      })
+      setCarrinho(novoCarrinho)
+    } else {
+      const umaQuantidade = {...produtoNovo, quantity: 1}
+      setCarrinho([...carrinho, umaQuantidade])
+    }
+   }
+
+   const removeCarrinho = (removerProduto) => {}
 
   const produtosFiltrados = produtos
     .filter((item) => {
@@ -112,7 +130,9 @@ function App() {
         />
       </ContainerHome>
       <ContainerCart>
-        <Cart />
+        <Cart 
+          produtos={carrinho}
+        />
       </ContainerCart>
     </MainContainer>
   );
