@@ -22,16 +22,28 @@ const ValorTotal = styled.p`
 `
 
 const Cart = (props) => {
-    
-    return(
-        <Container>            
-            <h2>Carrinho:</h2>
-            <Produto>
-                <p>2X</p>  {/* TODO: Modificar valor de id por valor de quantidade */}
-                <p>Produto {01}</p>
+
+    const produtosCarrinho = props.produtos.map((item, index) => {
+        return (
+            <Produto key={index}>
+                <p>{item.quantity}</p>  
+                <p>{item.name}</p>
                 <BotaoRemover>Remover</BotaoRemover>
             </Produto>
-            <ValorTotal>Valor Total: R$ 2.300,00</ValorTotal>
+        )
+    })
+
+    const totalCompra = props.produtos.reduce((a, b) => a + b.price * b.quantity, 0)
+
+    return (
+        <Container>
+            <h2>Carrinho:</h2>
+            {produtosCarrinho}
+            <ValorTotal>
+                
+                {totalCompra > 0 &&
+                totalCompra.toFixed(2)}
+            </ValorTotal>
         </Container>
     )
 }

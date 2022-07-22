@@ -10,6 +10,7 @@ export const mockProdutos = [
         name: 'Camiseta Masculina Estampada Astronauta',
         price: 70.90,
         photo: 'https://images-americanas.b2w.io/produtos/4605995901/imagens/camiseta-masculina-estampada-astronauta-fora-do-espaco-m/4605995910_1_large.jpg',
+
     },
     {
         id: 3,
