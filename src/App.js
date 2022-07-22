@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Home from './components/Home/home';
 import { mockProdutos } from './mockpDados';
 import Filtros from "./components/Filtros/Filtros";
-import Home from './components/Home/home';
 
 const MainContainer = styled.div`
   display: flex;
