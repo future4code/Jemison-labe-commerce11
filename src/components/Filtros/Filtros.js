@@ -25,10 +25,6 @@ function Filtros(props){
                         <input type="number" value={props.maxPrice} onChange={props.updateMaxPrice} />
                     </label>
                 </div>
-
-
-                <button type="submit" onClick={"submit"}>Filtrar</button>
-
             </form>
         </Sessao>
     )

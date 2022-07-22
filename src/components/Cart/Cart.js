@@ -19,7 +19,7 @@ const BotaoRemover = styled.button`
 font-size: 15px;
        
        height: 30px;
-      
+        cursor: pointer;
        background: #016ABC;
        color: #fff;
        
@@ -41,7 +41,7 @@ const Cart = (props) => {
             <Produto key={index}>
                 <p>{item.quantity}</p>  
                 <p>{item.name}</p>
-                <BotaoRemover>Remover</BotaoRemover>
+                <BotaoRemover onClick={()=> props.removerProduto(item)}>Remover</BotaoRemover>
             </Produto>
         )
     })
