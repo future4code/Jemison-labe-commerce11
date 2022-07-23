@@ -64,21 +64,37 @@ function App() {
   const adicionaCarrinho = (produtoNovo) => {
     const existeNoCarrinho = carrinho.find(produto => produto.id === produtoNovo.id)
 
-    if(existeNoCarrinho) {
+    if (existeNoCarrinho) {
       const novoCarrinho = carrinho.map(produto => {
-        if(produto.id === produtoNovo.id) {
-          return {...produto, quantity: produto.quantity + 1}
+        if (produto.id === produtoNovo.id) {
+          return { ...produto, quantity: produto.quantity + 1 }
         }
         return produto
       })
       setCarrinho(novoCarrinho)
     } else {
-      const umaQuantidade = {...produtoNovo, quantity: 1}
+      const umaQuantidade = { ...produtoNovo, quantity: 1 }
       setCarrinho([...carrinho, umaQuantidade])
     }
-   }
+  }
 
-   const removeCarrinho = (removerProduto) => {}
+  const removerCarrinho = (removerProduto) => {
+    const existeNoCarrinho = carrinho.find(produto => produto.id === removerProduto.id)
+
+    if (existeNoCarrinho) {
+      const novoCarrinho = carrinho
+      .map(produto => {
+        if (produto.id === removerProduto.id) {
+          return { ...produto, quantity: produto.quantity - 1 }
+        }
+        return produto
+      })
+      .filter((produto) => {
+        return produto.quantity > 0
+      })
+      setCarrinho(novoCarrinho)
+    }
+  }
 
   const produtosFiltrados = produtos
     .filter((item) => {
@@ -113,7 +129,7 @@ function App() {
 
 
   return (
-    
+
     <MainContainer>
       <ContainerFilter>
         <Filtros
@@ -132,8 +148,8 @@ function App() {
         />
       </ContainerHome>
       <ContainerCart>
-        <Cart 
-          produtos={carrinho}
+        <Cart
+          produtos={carrinho} removerProduto={removerCarrinho}
         />
       </ContainerCart>
     </MainContainer>
