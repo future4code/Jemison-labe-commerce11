@@ -41,7 +41,17 @@ export const Prod = styled.div`
 
     button{
         font-size: 15px;
-        border-radius: 5px;
-        height: 5%;
-    }
+       
+        height: 55px;
+       
+        background: #016ABC;
+        color: #fff;
+        
+        border: 1px solid #eee;
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px #eee;
+        text-shadow:none;
+
+
+}
 `

@@ -6,42 +6,57 @@ const Container = styled.div`
   flex-direction: column;
   height: 100%;
   padding: 1rem;
+  color: #4682B4;
 `
 
 const Produto = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
+color: black;
 `
 const BotaoRemover = styled.button`
-
+font-size: 15px;
+       
+       height: 30px;
+        cursor: pointer;
+       background: #016ABC;
+       color: #fff;
+       
+       border: 1px solid #eee;
+       border-radius: 5px;
+       box-shadow: 5px 5px 5px #eee;
+       text-shadow:none;
 `
 
 const ValorTotal = styled.p`
+color: black;
 
 `
 
 const Cart = (props) => {
 
-    const produtos = props.listaCarrinho.map((item, index) => {
+    const produtosCarrinho = props.produtos.map((item, index) => {
         return (
             <Produto key={index}>
-                <p>{item.quantidade}X</p>
+                <p>{item.quantity}</p>  
                 <p>{item.name}</p>
-                <BotaoRemover>Remover</BotaoRemover>
+                <BotaoRemover onClick={()=> props.removerProduto(item)}>Remover</BotaoRemover>
             </Produto>
         )
     })
-    console.log(props.listaCarrinho);
 
-    const total = props.listaCarrinho.map((item, index) =>)
+    const totalCompra = props.produtos.reduce((a, b) => a + b.price * b.quantity, 0)
 
-    
-    return(
-        <Container>            
+    return (
+        <Container>
             <h2>Carrinho:</h2>
-            {produtos}
-            <ValorTotal>Valor Total: R$ 2.300,00</ValorTotal>
+            {produtosCarrinho}
+            <ValorTotal>
+                
+                {totalCompra > 0 &&
+                totalCompra.toFixed(2)}
+            </ValorTotal>
         </Container>
     )
 }

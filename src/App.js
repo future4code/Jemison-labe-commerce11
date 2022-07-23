@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Cart from "./components/Cart/Cart";
 import styled from "styled-components";
 import Home from './components/Home/home';
 import { mockProdutos } from './mockpDados';
 import Filtros from "./components/Filtros/Filtros";
+
 
 
 const MainContainer = styled.div`
@@ -37,47 +38,122 @@ const ContainerCart = styled.div`
 
 const App = () => {
 
-  // const [produtos] = useState(mockProdutos)
+  const [produtos, setProdutos] = useState(mockProdutos)
+  const [query, setQuery] = useState("")
+  const [minPrice, setMinPrice] = useState("")
+  const [maxPrice, setMaxPrice] = useState("")
+  const [order, setOrder] = useState("")
+  const [carrinho, setCarrinho] = useState([])
 
-  const [listaSelecionada] = useState([
-    {
-      id: 1,
-      name: 'Camiseta Unissex Astronaut Swing Moon Space Nasa',
-      price: 79.90,
-      quantidade: 1,
-      photo: 'https://static3.tcdn.com.br/img/img_prod/460977/camiseta_masculina_unissex_astronaut_swing_moon_space_nasa_astronauta_balanco_na_lua_espaco_preta_ev_79625_1_e2852b083521f284cff8a5beaa512de0.jpg',
-  },
-  {
-      id: 2,
-      name: 'Camiseta Masculina Estampada Astronauta',
-      price: 70.90,
-      quantidade: 4,
-      photo: 'https://images-americanas.b2w.io/produtos/4605995901/imagens/camiseta-masculina-estampada-astronauta-fora-do-espaco-m/4605995910_1_large.jpg',
-  },
-  {
-      id: 3,
-      name: 'Camiseta Astronauta Nasa',
-      price: 59.90,
-      quantidade: 2,
-      photo: 'https://http2.mlstatic.com/D_NQ_NP_975188-MLB48852556716_012022-O.webp',
+  const updateQuery = (e) => {
+    setQuery(e.target.value)
   }
-  ])
-  
-  const adicionaCarrinho = (produto) => {}
+
+  const updateMinPrice = (e) => {
+    setMinPrice(e.target.value)
+  }
+
+  const updateMaxPrice = (e) => {
+    setMaxPrice(e.target.value)
+  }
+
+  const updateOrder = (e) => {
+    setOrder(e.target.value)
+  }
+
+  const adicionaCarrinho = (produtoNovo) => {
+    const existeNoCarrinho = carrinho.find(produto => produto.id === produtoNovo.id)
+
+    if (existeNoCarrinho) {
+      const novoCarrinho = carrinho.map(produto => {
+        if (produto.id === produtoNovo.id) {
+          return { ...produto, quantity: produto.quantity + 1 }
+        }
+        return produto
+      })
+      setCarrinho(novoCarrinho)
+    } else {
+      const umaQuantidade = { ...produtoNovo, quantity: 1 }
+      setCarrinho([...carrinho, umaQuantidade])
+    }
+  }
+
+  const removerCarrinho = (removerProduto) => {
+    const existeNoCarrinho = carrinho.find(produto => produto.id === removerProduto.id)
+
+    if (existeNoCarrinho) {
+      const novoCarrinho = carrinho
+      .map(produto => {
+        if (produto.id === removerProduto.id) {
+          return { ...produto, quantity: produto.quantity - 1 }
+        }
+        return produto
+      })
+      .filter((produto) => {
+        return produto.quantity > 0
+      })
+      setCarrinho(novoCarrinho)
+    }
+  }
+
+  const produtosFiltrados = produtos
+    .filter((item) => {
+      return item.name.toLowerCase().includes(query.toLowerCase()) || query === ""
+    })
+    .filter((item) => {
+      return item.price >= minPrice || minPrice === ""
+    })
+    .filter((item) => {
+      return item.price <= maxPrice || maxPrice === ""
+    })
+    .sort((currentValue, nextValue) => {
+      if (order === "asc") {
+        if (currentValue.name > nextValue.name) {
+          return 1
+        }
+        if (currentValue.name < nextValue.name) {
+          return -1
+        }
+        return 0
+      }
+      if (order === "desc") {
+        if (currentValue.name > nextValue.name) {
+          return -1
+        }
+        if (currentValue.name < nextValue.name) {
+          return 1
+        }
+        return 0
+      }
+    })
+
 
   return (
+
     <MainContainer>
 
       <ContainerFilter>
-        <Filtros/>
+        <Filtros
+          query={query}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          updateQuery={updateQuery}
+          updateMinPrice={updateMinPrice}
+          updateMaxPrice={updateMaxPrice}
+        />
       </ContainerFilter>
 
       <ContainerHome>
-        <Home produtos={mockProdutos} addCarrinho={adicionaCarrinho}/>
+        <Home produtos={produtosFiltrados} addCarrinho={adicionaCarrinho}
+          order={order}
+          updateOrder={updateOrder}
+        />
       </ContainerHome>
 
       <ContainerCart>
-        <Cart listaCarrinho={listaSelecionada}/>
+        <Cart
+          produtos={carrinho} removerProduto={removerCarrinho}
+        />
       </ContainerCart>
 
     </MainContainer>
