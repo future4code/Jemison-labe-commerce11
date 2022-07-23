@@ -36,7 +36,7 @@ const ContainerCart = styled.div`
   min-height: 100%;
 `
 
-function App() {
+const App = () => {
 
   const [produtos, setProdutos] = useState(mockProdutos)
   const [query, setQuery] = useState("")
@@ -131,6 +131,7 @@ function App() {
   return (
 
     <MainContainer>
+
       <ContainerFilter>
         <Filtros
           query={query}
@@ -141,17 +142,20 @@ function App() {
           updateMaxPrice={updateMaxPrice}
         />
       </ContainerFilter>
+
       <ContainerHome>
         <Home produtos={produtosFiltrados} addCarrinho={adicionaCarrinho}
           order={order}
           updateOrder={updateOrder}
         />
       </ContainerHome>
+
       <ContainerCart>
         <Cart
           produtos={carrinho} removerProduto={removerCarrinho}
         />
       </ContainerCart>
+
     </MainContainer>
   );
 }
