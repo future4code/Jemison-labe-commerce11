@@ -4,26 +4,33 @@ import styled from "styled-components";
 import Home from './components/Home/home';
 import { mockProdutos } from './mockpDados';
 import Filtros from "./components/Filtros/Filtros";
+import Header from "./components/Header/header";
+import Footer from "./components/Footer/footer";
 
 
 
 const MainContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-direction: column;
   min-height: 100%;
 `
+const Site = styled.div`
+  display: flex;
+  flex-direction: row;
+  min-height: 100%;
+`
+
 const ContainerFilter = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  background-color: #9AA1AB;
   width: 20%;
   min-height: 100%;
 `
 const ContainerHome = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+
   width: 60%;
   min-height: 100%;
 `
@@ -31,7 +38,7 @@ const ContainerHome = styled.div`
 const ContainerCart = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  background-color: #9AA1AB;
   width: 20%;
   min-height: 100%;
 `
@@ -83,15 +90,15 @@ const App = () => {
 
     if (existeNoCarrinho) {
       const novoCarrinho = carrinho
-      .map(produto => {
-        if (produto.id === removerProduto.id) {
-          return { ...produto, quantity: produto.quantity - 1 }
-        }
-        return produto
-      })
-      .filter((produto) => {
-        return produto.quantity > 0
-      })
+        .map(produto => {
+          if (produto.id === removerProduto.id) {
+            return { ...produto, quantity: produto.quantity - 1 }
+          }
+          return produto
+        })
+        .filter((produto) => {
+          return produto.quantity > 0
+        })
       setCarrinho(novoCarrinho)
     }
   }
@@ -129,33 +136,38 @@ const App = () => {
 
 
   return (
-
     <MainContainer>
+      <div>
+        <Header />
+      </div>
+      <Site>
+        <ContainerFilter>
+          <Filtros
+            query={query}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            updateQuery={updateQuery}
+            updateMinPrice={updateMinPrice}
+            updateMaxPrice={updateMaxPrice}
+          />
+        </ContainerFilter>
 
-      <ContainerFilter>
-        <Filtros
-          query={query}
-          minPrice={minPrice}
-          maxPrice={maxPrice}
-          updateQuery={updateQuery}
-          updateMinPrice={updateMinPrice}
-          updateMaxPrice={updateMaxPrice}
-        />
-      </ContainerFilter>
+        <ContainerHome>
+          <Home produtos={produtosFiltrados} addCarrinho={adicionaCarrinho}
+            order={order}
+            updateOrder={updateOrder}
+          />
+        </ContainerHome>
 
-      <ContainerHome>
-        <Home produtos={produtosFiltrados} addCarrinho={adicionaCarrinho}
-          order={order}
-          updateOrder={updateOrder}
-        />
-      </ContainerHome>
-
-      <ContainerCart>
-        <Cart
-          produtos={carrinho} removerProduto={removerCarrinho}
-        />
-      </ContainerCart>
-
+        <ContainerCart>
+          <Cart
+            produtos={carrinho} removerProduto={removerCarrinho}
+          />
+        </ContainerCart>
+      </Site>
+      <div>
+        <Footer/>
+      </div>
     </MainContainer>
   );
 }

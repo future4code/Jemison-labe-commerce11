@@ -22,4 +22,4 @@ Projeto ecommerce Labenu, com filtros, carrinho....
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/85848796/180583506-533ed3db-54f3-41a9-8b85-e6d3e26607f7.png)
+<img src="./src./../src/components/img/screenshot.png>
