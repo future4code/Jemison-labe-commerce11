@@ -5,7 +5,7 @@ Projeto ecommerce Labenu, com filtros, carrinho....
 
 
 ## 🔗 Links
-[ Link Surge](https://abundant-bat.surge.sh/)
+[ Link Surge](https://flat-event.surge.sh/)
 
 
 ## Autores
@@ -22,4 +22,4 @@ Projeto ecommerce Labenu, com filtros, carrinho....
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/85848796/180583506-533ed3db-54f3-41a9-8b85-e6d3e26607f7.png)
+![screenshot](https://user-images.githubusercontent.com/102482348/180622159-cd5bfa92-87b9-4843-bbe3-5f19e86a5665.png)

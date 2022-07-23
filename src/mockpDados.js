@@ -14,7 +14,7 @@ export const mockProdutos = [
     },
     {
         id: 3,
-        name: 'Camiseta Astronauta Nasa',
+        name: 'Camiseta Masculina Astronauta Nasa Dab',
         price: 59.90,
         photo: 'https://http2.mlstatic.com/D_NQ_NP_975188-MLB48852556716_012022-O.webp',
     },

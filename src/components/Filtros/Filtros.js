@@ -1,29 +1,29 @@
 import React from "react";
-import {Sessao} from './StyledFiltro.js';
+import { Sessao } from './StyledFiltro.js';
 
-function Filtros(props){
+function Filtros(props) {
 
-    return(
+    return (
         <Sessao>
-            <h1>Filtros</h1>
+            <h2>Filtros</h2>
             <form action="">
                 <div>
-                    <label>
-                        Buscar por nome:
-                        <input type="text" value={props.query} onChange={props.updateQuery} />
-                    </label>
+                    <div>
+                        <label>Buscar por nome</label>
+                    </div>
+                    <input type="text" value={props.query} onChange={props.updateQuery} />
                 </div>
                 <div>
-                    <label>
-                        Menor Preço:
-                        <input type="number" value={props.minPrice} onChange={props.updateMinPrice} />
-                    </label>
+                    <div>
+                        <label>Menor Preço</label>
+                    </div>
+                    <input type="number" value={props.minPrice} onChange={props.updateMinPrice} />
                 </div>
                 <div>
-                    <label>
-                        Maior preço:
-                        <input type="number" value={props.maxPrice} onChange={props.updateMaxPrice} />
-                    </label>
+                    <div>
+                        <label>Maior preço</label>
+                    </div>
+                    <input type="number" value={props.maxPrice} onChange={props.updateMaxPrice} />
                 </div>
             </form>
         </Sessao>
