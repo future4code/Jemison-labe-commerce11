@@ -5,7 +5,7 @@ Projeto ecommerce Labenu, com filtros, carrinho....
 
 
 ## 🔗 Links
-[!Suge](https://abundant-bat.surge.sh/)
+[ Link Surge](https://abundant-bat.surge.sh/)
 
 
 ## Autores
