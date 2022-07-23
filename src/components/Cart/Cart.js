@@ -14,6 +14,7 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 color: black;
+padding-right: 20px;
 `
 const BotaoRemover = styled.button`
 font-size: 15px;
@@ -39,7 +40,7 @@ const Cart = (props) => {
     const produtosCarrinho = props.produtos.map((item, index) => {
         return (
             <Produto key={index}>
-                <p>{item.quantity}</p>  
+                <p>{item.quantity}x</p>  
                 <p>{item.name}</p>
                 <BotaoRemover onClick={()=> props.removerProduto(item)}>Remover</BotaoRemover>
             </Produto>
@@ -53,7 +54,7 @@ const Cart = (props) => {
             <h2>Carrinho:</h2>
             {produtosCarrinho}
             <ValorTotal>
-                
+            <span>Valor Total: R$ </span>    
                 {totalCompra > 0 &&
                 totalCompra.toFixed(2)}
             </ValorTotal>
